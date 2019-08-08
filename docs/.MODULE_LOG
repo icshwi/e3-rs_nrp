@@ -1,0 +1,17 @@
+>>
+Script is used     : e3TemplateGenerator.bash
+Script Path        : /home/saeedhaghtalab/e3-3.16.2/ics_gitsrc/e3-tools/e3TemplateGenerator
+User               : saeedhaghtalab
+Log Time           : 2019Aug07-1606-56CEST
+e3 repo Hash       : 516fce4
+
+>>
+>> Your sources are located in e3-rs_nrp.
+>> 
+EPICS_MODULE_NAME  : rs_nrp
+E3_MODULE_SRC_PATH : rs_nrp
+E3_TARGET_URL      : https://github.com/icshwi
+>> 
+e3 module name     : e3-rs_nrp
+e3 target url full : https://github.com/icshwi/e3-rs_nrp.git
+>> 

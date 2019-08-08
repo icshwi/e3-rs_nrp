@@ -1,0 +1,9 @@
+require stream,2.8.8
+
+epicsEnvSet("IP",                   "$(IP)")
+epicsEnvSet("ASYN_PORT",            "RS_NRP_ASYN_PORT"
+epicsEnvSet("STREAM_PROTOCOL_PATH", "${rs_nrp_DB}")
+
+drvAsynIPPortConfigure("${ASYN_PORT}", "${IP}:5025", 0, 0, 0)
+dbLoadRecords("${rs_nrp_DB}/rs_nrp.db", "secsub=$(secsub),disdevidx=$(disdevidx),PORT=$(ASYN_PORT)")
+

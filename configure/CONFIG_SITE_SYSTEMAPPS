@@ -1,0 +1,13 @@
+
+#E3_MODULES_PATH = /siteApps/icsApps
+#E3_MODULES_PATH = /siteApps/accApps
+#E3_MODULES_PATH = /siteApps/cfApps
+#E3_MODULES_PATH = /siteApps/tgtApps
+#E3_MODULES_PATH = /siteApps/expApps
+#E3_MODULES_PATH = /siteApps/exp16Apps
+
+
+-include $(TOP)/../CONFIG_SITE_SYSTEMAPPS.local
+-include $(TOP)/CONFIG_SITE_SYSTEMAPPS.local
+-include $(TOP)/configure/CONFIG_SITE_SYSTEMAPPS.local
+

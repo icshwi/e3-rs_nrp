@@ -1,0 +1,12 @@
+
+include $(REQUIRE_CONFIG)/RULES_E3
+include $(REQUIRE_CONFIG)/DEFINES_FT
+include $(REQUIRE_CONFIG)/RULES_PATCH
+include $(REQUIRE_CONFIG)/RULES_E3_SITEAPPS
+
+include $(REQUIRE_CONFIG)/RULES_VLIBS
+include $(REQUIRE_CONFIG)/RULES_VARS
+
+include $(TOP)/configure/module/RULES_MODULE
+-include $(TOP)/configure/module/RULES_DKMS_L
+

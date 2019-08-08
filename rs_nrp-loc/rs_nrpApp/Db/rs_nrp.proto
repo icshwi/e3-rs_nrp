@@ -1,0 +1,172 @@
+Terminator = LF;
+ExtraInput = Ignore;
+ReplyTimeout = 1000;
+ReadTimeout  = 300;
+
+############### MANUFACTOR ###############
+getPOWmanufactor
+{
+    out "*IDN?";
+    in "%39c";
+}
+
+############## RUN ##############
+setRun
+{
+    out "%{|SENS:FUNC \"POW:AVG\"}";
+    out "%{|FREQ 704.4e6}";
+    out "%{|SENS:AVER:COUN:AUTO OFF}";
+    out "INIT:CONT %{OFF|ON}";
+}
+############### FREQUENCY? ###############
+getFrequency
+{
+    out "FREQuency?";    in "%f";
+}
+
+setFrequency
+{ 
+    out "FREQuency %f";
+    @init { getFrequency; }
+}
+
+############### OFFSET_SWITCH ###############
+offset_switch
+{      
+    out "CORRection:OFFSet %(IOC-Rohde&Schwarz:SRF-Lab:offset_value.VAL)f";
+    out "%#{CORR:OFFS:STAT OFF=0|CORR:OFFS:STAT ON=1}";   
+}
+
+############### Average ################
+getAverage
+{
+    out "SENSe:AVERage:COUNt?"; in "%f";
+}
+
+setAverage
+{
+    out "SENSe:AVERage:COUNt %f";
+    @init { getAverage; }
+}
+
+############### Continuous Mode #################
+############### APERTURE TIME ###############
+getAperture
+{
+    out "SENSe:POWer:AVG:APERture?";    in "%f";
+}
+
+setAperture
+{ 
+    out "SENSe:POWer:AVG:APERture %f";
+    @init { getAperture; }
+}
+
+############### SMOOTHING ###############
+setSmoothing
+{
+    out "%#{SENSe:POWer:AVG:SMOothing:STATe OFF=0|SENSe:POWer:AVG:SMOothing:STATe ON=1}";       
+}
+
+getSmoothing
+{
+    out "SENSe:POWer:AVG:SMOothing:STATe?";
+    in "%s";
+}
+############### DUTY CYCLE Setting ##############
+setDCycle
+{      
+    out "SENSe:CORRection:DCYCle %(IOC-Rohde&Schwarz:SRF-Lab:DCycle_value.VAL)f";
+    out "%#{SENSe:CORRection:DCYCle:STATe OFF=0|SENSe:CORRection:DCYCle:STATe ON=1}";   
+}
+
+############### Power Measurement ###############
+getPowerDBM
+{
+    out "UNIT:POW DBM";
+    out "CALC:FEED \"POW:AVER\"";
+    out "INIT";
+    out "FETCh?";
+    in "%f";
+}
+
+############### Trace Parameter ################
+setTrace
+{
+    out "%{SENS:FUNC \"POW:AVG\"|SENS:FUNC \"XTIMe:POWer\"}";
+}
+ 
+getTraceValue
+{
+    out "UNIT:POW DBM";
+    out "CALC:FEED \"POW:TRAC\"";
+    out "INIT";
+    out "FETCh?";
+    separator=","; 
+    in "%f";
+}
+############### Trace Setting ##############
+############ Points ###########
+getTracePoints
+{
+    out "SENS:TRAC:POIN?";    in "%f";
+}
+setTracePoints
+{
+    out "SENS:TRAC:POIN %f";
+    @init { getTracePoints; }
+}
+############ OffsetTime ###########
+getTraceOffsetTime
+{
+    out "SENS:TRAC:OFFS:TIME?";   in "%f";  
+}
+setTraceOffsetTime
+{
+    out "SENS:TRAC:OFFS:TIME %f";
+    @init { getTraceOffsetTime; }
+}
+############ Trace Time ###########
+getTracetime
+{
+    out "SENS:TRAC:TIME?";    in "%f";
+}
+setTraceTime
+{
+    out "SENS:TRAC:TIME %f";
+    @init { getTracetime; }
+}
+############ Trigger Source ###########
+getTriggerSource
+{
+    out "TRIG:SOUR?";
+    in "%39c";
+}
+
+setTriggerSource
+{
+    out "TRIG:SOUR %#{IMM=1|INT=2|EXT=3|EXT2=4|BUS=5|HOLD=6}";
+}
+############ Trigger Level ###########
+getTracelevel
+{
+    out "TRIG:LEV?";
+    in "%f";
+}
+setTracelevel
+{
+    out "TRIG:LEV %f";
+    @init { getTracelevel; }
+}
+
+############ Trigger Delay ###########
+getTriggerDelay
+{
+    out "TRIG:DEL?";
+    in "%f";
+}
+setTriggerDelay
+{
+    out "TRIG:DEL %f";
+    @init { getTriggerDelay; }
+}

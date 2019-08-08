@@ -1,0 +1,492 @@
+#
+#  author  : muyuanwang
+#  email   : wangmy@ihep.ac.cn
+
+########## Get Power-Sensor Manufactor ##########
+record(stringin, "$(secsub):$(disdevidx):GetManufactor")
+{
+    field(DTYP, "stream")
+    field(INP,  "@rs_nrp.proto getPOWmanufactor $(PORT)")
+    field(SCAN, "1 second")
+}
+
+########## SetRun for Power Sensor ##########
+record(bo, "$(secsub):$(disdevidx):setRun")
+{
+    field(SCAN, "Passive")    
+    field(FLNK, "$(secsub):$(disdevidx):setRun_v")
+    field(VAL, "0")
+    field(ZNAM, "Run_off")
+    field(ONAM, "Run_on")
+}
+
+record(calc, "$(secsub):$(disdevidx):setRun_v")
+{
+    field(SCAN, "Passive")
+    field(FLNK, "$(secsub):$(disdevidx):setRun_to")
+    field(CALC, "A?1:0")
+    field(INPA, "$(secsub):$(disdevidx):setRun.VAL")
+}
+
+record(bo, "$(secsub):$(disdevidx):setRun_to")
+{
+    field(DTYP, "stream")
+    field(OUT, "@rs_nrp.proto setRun $(PORT)")
+    field(DOL, "$(secsub):$(disdevidx):setRun_v.VAL")
+    field(OMSL, "closed_loop")
+}
+
+########## Main Parameter ############################
+########## Frequency setting ##########
+record(ao,"$(secsub):$(disdevidx):FREQ_value")
+{
+    field(SCAN, "Passive")
+    field(OUT, "$(secsub):$(disdevidx):FREQ_value.VAL")
+    field(VAL, "704.4")
+    field(EGU, "MHz")
+    field(PREC,"2")
+}
+
+record(calcout,"$(secsub):$(disdevidx):setFREQ")
+{
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(OUT, "@rs_nrp.proto setFrequency $(PORT)")
+    field(CALC, "A*B")
+    field(INPA, "$(secsub):$(disdevidx):FREQ_value.VAL")
+    field(INPB, "1e6")
+    field(OOPT, "On Change")
+    field(DOPT, "Use CALC")
+}
+
+record(ai, "$(secsub):$(disdevidx):getFREQ")
+{
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP,  "@rs_nrp.proto getFrequency $(PORT)")
+    field(EGU, "Hz")
+    field(PREC, "3")
+}
+
+########## Offset Setting ##########
+record(bo, "$(secsub):$(disdevidx):offset_switch")
+{
+    field(SCAN, "1 second")
+    field(VAL, "0")
+    field(DTYP, "stream")
+    field(OUT, "@rs_nrp.proto offset_switch $(PORT)")
+    field(ZNAM, "0")
+    field(ONAM, "1")
+}
+
+record(ao, "$(secsub):$(disdevidx):offset_value")
+{
+    field(SCAN, "Passive")
+    field(VAL, "10")
+    field(EGU, "dB")
+    field(PREC,"1")
+}
+
+########## Averaging ##########
+record(ao, "$(secsub):$(disdevidx):setAverage")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "stream")
+    field(OUT, "@rs_nrp.proto setAverage $(PORT)")
+    field(VAL, "4")
+    field(PINI, "YES") 
+}
+
+record(ai, "$(secsub):$(disdevidx):getAverage")
+{
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP,  "@rs_nrp.proto getAverage $(PORT)")
+}
+
+##########################################################
+########## Continuous Average Mode ##########
+########## Aperture Time Setting ###########
+record(ao,"$(secsub):$(disdevidx):Aperture_value")
+{
+    field(SCAN, "Passive")
+    field(OUT, "$(secsub):$(disdevidx):Aperture_value.VAL")
+    field(EGU, "ms")
+    field(PREC,"3")
+    field(VAL, "20")
+}
+
+record(calcout,"$(secsub):$(disdevidx):set_Aperture")
+{
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(OUT, "@rs_nrp.proto setAperture $(PORT)")
+    field(CALC, "A/B")
+    field(INPA, "$(secsub):$(disdevidx):Aperture_value.VAL")
+    field(INPB, "1000")
+    field(OOPT, "On Change")
+    field(DOPT, "Use CALC")
+}
+
+record(ai, "$(secsub):$(disdevidx):get_Aperture")
+{
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP,  "@rs_nrp.proto getAperture $(PORT)")
+    field(EGU, "s")
+    field(FLNK, "$(secsub):$(disdevidx):get_Aperture_calc")
+}
+
+record(calc, "$(secsub):$(disdevidx):get_Aperture_calc")
+{
+    field(SCAN, "Passive")
+    field(INPA, "$(secsub):$(disdevidx):get_Aperture.VAL")
+    field(INPB, "1e3")
+    field(CALC, "A*B")
+    field(EGU, "ms")
+    field(PREC, "3")
+}
+
+########## Duty Cycle Setting ###########
+record(ao,"$(secsub):$(disdevidx):DCycle_value")
+{
+    field(SCAN, "Passive")
+    field(OUT, "$(secsub):$(disdevidx):DCycle_value.VAL")
+    field(EGU, "%")
+    field(PREC,"2")
+    field(VAL, "1")
+}
+
+record(bo,"$(secsub):$(disdevidx):set_DCycle")
+{
+    field(SCAN, "1 second")
+    field(VAL, "0")
+    field(DTYP, "stream")
+    field(OUT, "@rs_nrp.proto setDCycle $(PORT)")
+    field(ZNAM, "0")
+    field(ONAM, "1")
+}
+
+############ Smoothing Setting ###########
+record(bo,"$(secsub):$(disdevidx):smoothing")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "stream")
+    field(OUT, "@rs_nrp.proto setSmoothing $(PORT)")
+    field(VAL, "0")
+    field(ZNAM, "0")
+    field(ONAM, "1")
+}
+
+record(stringin, "$(secsub):$(disdevidx):SmoothingState")
+{
+    field(DTYP, "stream")
+    field(INP,  "@rs_nrp.proto getSmoothing $(PORT)")
+    field(SCAN, "1 second")
+}
+
+##########################################################
+########## Fetch the Power-Sensor Value ##########
+###################### DBM #######################
+#record(calcout, "$(secsub):$(disdevidx):getPower_DBM")
+#{
+#    field(DTYP, "stream")
+#    field(OUT, "@rs_nrp.proto getPowerDBM $(PORT)")
+#    field(SCAN, ".2 second")
+#    field(CALC, "A?1:0")
+#    field(INPA, "$(secsub):$(disdevidx):.VAL")
+#    field(INPB, "$(secsub):$(disdevidx):setTrace_to.VAL")
+#    field(OOPT, "Every Time")
+#    field(DOPT, "Use CALC")
+#}
+
+record(ai,"$(secsub):$(disdevidx):Value_DBM")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "stream")
+    field(INP, "@rs_nrp.proto getPowerDBM $(PORT)")
+    field(VAL, "0")
+    field(EGU,"dBm")
+    field(PREC, "3")
+}
+
+##########################################################
+############ Trace Parameter #############
+############ trace time ############
+record(ao,"$(secsub):$(disdevidx):Trace_time")
+{
+    field(SCAN, "Passive")
+    field(FLNK, "$(secsub):$(disdevidx):Trace_time_calc")
+    field(EGU, "ms")
+    field(VAL, "10")
+    field(PREC, "1")
+    field(PINI, "YES")
+}
+record(calcout,"$(secsub):$(disdevidx):Trace_time_calc")
+{
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(OUT, "@rs_nrp.proto setTraceTime $(PORT)")
+    field(CALC, "A/B")
+    field(INPA, "$(secsub):$(disdevidx):Trace_time.VAL")
+    field(INPB, "1000")
+    field(OOPT, "On Change")
+    field(DOPT, "Use CALC")
+}
+record(ai, "$(secsub):$(disdevidx):Trace_time_callback")
+{
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP, "@rs_nrp.proto getTracetime $(PORT)")
+    field(EGU, "s")
+    field(PREC, "4")
+    field(FLNK, "$(secsub):$(disdevidx):trace_interval")
+}
+
+############ trace offset time ############
+record(ao,"$(secsub):$(disdevidx):Trace_offset_time")
+{
+    field(SCAN, "Passive")
+    field(FLNK, "$(secsub):$(disdevidx):Trace_offset_time_calc")
+    field(VAL, "0")
+    field(EGU, "ms")
+    field(PREC, "1")
+    field(PINI, "YES")
+}
+record(calcout,"$(secsub):$(disdevidx):Trace_offset_time_calc")
+{
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(OUT, "@rs_nrp.proto setTraceOffsetTime $(PORT)")
+    field(CALC, "A/B")
+    field(INPA, "$(secsub):$(disdevidx):Trace_offset_time.VAL")
+    field(INPB, "1000")
+    field(OOPT, "On Change")
+    field(DOPT, "Use CALC")
+}
+record(ai,"$(secsub):$(disdevidx):Trace_offset_time_callback")
+{
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP, "@rs_nrp.proto getTraceOffsetTime $(PORT)")
+    field(EGU, "s")
+    field(PREC, "4")
+    field(FLNK, "$(secsub):$(disdevidx):Xaxis_array")
+}
+
+############ trace points ############
+record(ao,"$(secsub):$(disdevidx):Trace_points")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "stream")
+    field(OUT, "@rs_nrp.proto setTracePoints $(PORT)")
+    field(VAL, "260")
+    field(PINI, "YES")
+    field(HIHI, "1000")
+    field(HIGH, "800")
+    field(LOW, "10")
+    field(LOLO, "1")
+}
+record(ai,"$(secsub):$(disdevidx):Trace_points_callback")
+{
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP, "@rs_nrp.proto getTracePoints $(PORT)")
+    field(FLNK, "$(secsub):$(disdevidx):trace_interval")
+}
+
+############ trigger source ############
+record(stringin, "$(secsub):$(disdevidx):TriggerSource")
+{
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP, "@rs_nrp.proto getTriggerSource $(PORT)")
+}
+record(mbbo, "$(secsub):$(disdevidx):setTriggerSource")
+{
+    field(DTYP, "Soft Channel")
+    field(OUT, "$(secsub):$(disdevidx):setTriggerSource_to")
+    field(VAL, "1")
+    field(ONVL, "1")
+    field(TWVL, "2")
+    field(THVL, "3")
+    field(FRVL, "4")
+    field(FVVL, "5")
+    field(SXVL, "6")
+    field(ONST, " 1  :  IMMediate")
+    field(TWST, " 2  :  INTernal")
+    field(THST, " 3  :  EXTernal")
+    field(FRST, " 4  :  EXTernal2")
+    field(FVST, " 5  :  BUS")
+    field(SXST, " 6  :  HOLD")
+}
+record(calcout, "$(secsub):$(disdevidx):setTriggerSource_to")
+{
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(OUT, "@rs_nrp.proto setTriggerSource $(PORT)")
+    field(CALC, "A")
+    field(INPA, "$(secsub):$(disdevidx):setTriggerSource.VAL")
+    field(PINI, "YES")
+}
+
+############ trace level ############
+record(ai,"$(secsub):$(disdevidx):Trace_level_callback_W")
+{
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP, "@rs_nrp.proto getTracelevel $(PORT)")
+    field(EGU, "W")
+    field(PREC, "4")
+    field(FLNK, "$(secsub):$(disdevidx):Trace_level_callback_DBM")
+}
+record(calc, "$(secsub):$(disdevidx):Trace_level_callback_DBM")
+{
+    field(SCAN, "Passive")
+    field(INPA, "$(secsub):$(disdevidx):Trace_level_callback_W.VAL")
+    field(CALC, "10*LOG(A)+30")
+    field(EGU, "dBm")
+    field(PREC, "2")
+    #field(FLNK, "$(secsub):$(disdevidx):Trace_Yaxis_display")
+}
+
+record(ao,"$(secsub):$(disdevidx):Trace_level_DBM")
+{
+    field(SCAN, "Passive")
+    field(FLNK, "$(secsub):$(disdevidx):Trace_level_W")
+    field(EGU, "dBm")
+    field(VAL, "-25")
+    field(PREC, "2")
+    field(PINI, "YES")
+}
+record(calcout, "$(secsub):$(disdevidx):Trace_level_W")
+{
+    field(SCAN, "Passive")
+    field(DTYP, "stream")
+    field(OUT, "@rs_nrp.proto setTracelevel $(PORT)")
+    field(CALC, "(10^(A/10))/1000")
+    field(INPA, "$(secsub):$(disdevidx):Trace_level_DBM.VAL")
+    field(OOPT, "On Change")
+    field(DOPT, "Use CALC")
+}
+
+record(aSub, "$(secsub):$(disdevidx):Trace_Yaxis")
+{
+    field(SCAN, "1 second")
+    field(SNAM, "my_asub_routine")
+    field(INPA, "$(secsub):$(disdevidx):Trace_level_callback_DBM.VAL")
+    #field(FTVA, "LONG")
+    #field(NOVA, "1000")
+    #field(FLNK, "$(secsub):$(disdevidx):Trace_Yaxis_display")
+}    
+#record(acalcout, "$(secsub):$(disdevidx):Trace_Yaxis_display")
+#{
+#    field(SCAN, "Passive")
+#    field(INPA, "$(secsub):$(disdevidx):Trace_level_callback_DBM.VAL")
+#    field(INAA, "$(secsub):$(disdevidx):Trace_Yaxis.VALA")
+#    field(CALC, "@0*@@0")
+#    field(OOPT, "Every Time")
+#    field(DOPT, "Use CALC")
+#    field(PREC, "2")
+#    field(NELM, "1000")
+#}
+
+############ trigger delay ############
+record(ai,"$(secsub):$(disdevidx):Trace_delay_callback")
+{
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP, "@rs_nrp.proto getTriggerDelay $(PORT)")
+    field(EGU, "s")
+    field(PREC, "4")
+}
+record(ao,"$(secsub):$(disdevidx):Trace_delay")
+{
+    field(SCAN, "Passive")
+    field(FLNK, "$(secsub):$(disdevidx):Trace_delay_calc")
+    field(EGU, "ms")
+    field(VAL, "0")
+    field(PREC, "1")
+    field(PINI, "YES")
+}
+record(calcout,"$(secsub):$(disdevidx):Trace_delay_calc")
+{
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(OUT, "@rs_nrp.proto setTriggerDelay $(PORT)")
+    field(CALC, "A/B")
+    field(INPA, "$(secsub):$(disdevidx):Trace_delay.VAL")
+    field(INPB, "1000")
+    field(OOPT, "On Change")
+    field(DOPT, "Use CALC")
+}
+############## Trace switch ###############
+record(bo, "$(secsub):$(disdevidx):setTrace")
+{
+    field(SCAN, "Passive")   
+    field(FLNK, "$(secsub):$(disdevidx):setTrace_v")
+    field(VAL, "0")
+    field(ZNAM, "Trace_off")
+    field(ONAM, "Trace_on")
+}
+record(calc, "$(secsub):$(disdevidx):setTrace_v")
+{
+    field(SCAN, "Passive")
+    field(FLNK, "$(secsub):$(disdevidx):setTrace_to")
+    field(CALC, "A?1:0")
+    field(INPA, "$(secsub):$(disdevidx):setTrace.VAL")
+}
+record(bo, "$(secsub):$(disdevidx):setTrace_to")
+{
+    field(DTYP, "stream")
+    field(OUT, "@rs_nrp.proto setTrace $(PORT)")
+    field(DOL, "$(secsub):$(disdevidx):setTrace_v.VAL")
+    field(OMSL, "closed_loop")
+}
+
+record(waveform,"$(secsub):$(disdevidx):Value_trace")
+{   
+    field(SCAN, "Passive")
+    field(DTYP, "stream")
+    field(INP, "@rs_nrp.proto getTraceValue $(PORT)")
+    field(FTVL, "FLOAT")
+    field(NELM, "1000")
+    field(EGU, "dBm")
+    field(PINI, "YES")
+    field(PREC, "4")
+}
+
+record(calc,"$(secsub):$(disdevidx):trace_interval")
+{
+    field(SCAN, "Passive")
+    field(CALC, "A*C/B")
+    field(INPA, "$(secsub):$(disdevidx):Trace_time_callback.VAL")
+    field(INPB, "$(secsub):$(disdevidx):Trace_points_callback.VAL")
+    field(INPC, "1e3")
+    field(PREC,"5")
+    field(EGU, "ms")
+    field(FLNK, "$(secsub):$(disdevidx):Xaxis_array")
+}
+
+record(acalcout, "$(secsub):$(disdevidx):Xaxis_array")
+{
+    field(SCAN, "Passive")
+    field(INPA, "$(secsub):$(disdevidx):trace_interval.VAL")
+    field(INPB, "$(secsub):$(disdevidx):Trace_offset_time_callback.VAL")
+    field(INPC, "1e3")
+    field(CALC, "@0*(IX+1)+@1*@2")
+    field(OOPT, "Every Time")
+    field(DOPT, "Use CALC")
+    field(PREC, "4")
+    field(NELM, "1000")
+}
+
+#record(subArray, "$(secsub):$(disdevidx):Xaxis_array-subArray")
+#{
+#    field(SCAN, "Passive")
+#    field(INP, "$(secsub):$(disdevidx):Xaxis_array")
+#    field(FTVL, "FLOAT")
+#    field(MALM, "1000")
+#    field(INDX, "0")
+#    field(NELM, "$(secsub):$(disdevidx):Value_trace.NORD")
+#}
