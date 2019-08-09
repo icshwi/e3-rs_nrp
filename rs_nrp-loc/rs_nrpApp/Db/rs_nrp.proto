@@ -33,7 +33,7 @@ setFrequency
 ############### OFFSET_SWITCH ###############
 offset_switch
 {      
-    out "CORRection:OFFSet %(IOC-Rohde&Schwarz:SRF-Lab:offset_value.VAL)f";
+    out "CORRection:OFFSet %(\$1:offset_value.VAL)f";
     out "%#{CORR:OFFS:STAT OFF=0|CORR:OFFS:STAT ON=1}";   
 }
 
@@ -76,7 +76,7 @@ getSmoothing
 ############### DUTY CYCLE Setting ##############
 setDCycle
 {      
-    out "SENSe:CORRection:DCYCle %(IOC-Rohde&Schwarz:SRF-Lab:DCycle_value.VAL)f";
+    out "SENSe:CORRection:DCYCle %(\$1:DCycle_value.VAL)f";
     out "%#{SENSe:CORRection:DCYCle:STATe OFF=0|SENSe:CORRection:DCYCle:STATe ON=1}";   
 }
 
