@@ -1,33 +1,39 @@
 Terminator = LF;
 ExtraInput = Ignore;
-ReplyTimeout = 1000;
+LockTimeout = 20000;
+ReplyTimeout = 15000;
 ReadTimeout  = 300;
 
 ############### MANUFACTOR ###############
 getPOWmanufactor
 {
     out "*IDN?";
-    in "%39c";
+    in  "%39c";
 }
 
-############## RUN ##############
+############### RESET ##############
+Reset
+{
+    out "%{|*RST}";
+}
+############### RUN ###############
 setRun
 {
+    #out "%{|*RST}";
     out "%{|SENS:FUNC \"POW:AVG\"}";
-    out "%{|FREQ 704.4e6}";
     out "%{|SENS:AVER:COUN:AUTO OFF}";
     out "INIT:CONT %{OFF|ON}";
 }
 ############### FREQUENCY? ###############
 getFrequency
 {
-    out "FREQuency?";    in "%f";
+    out "FREQuency?";    in "%g";
 }
 
 setFrequency
 { 
-    out "FREQuency %f";
-    @init { getFrequency; }
+    out "FREQuency %g";
+    #@init { getFrequency; }
 }
 
 ############### OFFSET_SWITCH ###############
@@ -46,10 +52,12 @@ getAverage
 setAverage
 {
     out "SENSe:AVERage:COUNt %f";
-    @init { getAverage; }
+    #@init { getAverage; }
 }
 
-############### Continuous Mode #################
+#################################################
+############### -->Continuous Mode<-- ###########
+#################################################
 ############### APERTURE TIME ###############
 getAperture
 {
@@ -59,7 +67,7 @@ getAperture
 setAperture
 { 
     out "SENSe:POWer:AVG:APERture %f";
-    @init { getAperture; }
+    #@init { getAperture; }
 }
 
 ############### SMOOTHING ###############
@@ -87,26 +95,41 @@ getPowerDBM
     out "CALC:FEED \"POW:AVER\"";
     out "INIT";
     out "FETCh?";
-    in "%f";
+    in  "%g";
 }
 
-############### Trace Parameter ################
+################################################
+###############-->Trace Mode<-- ################
+################################################
+############ Trace Value #############
 setTrace
 {
-    out "%{SENS:FUNC \"POW:AVG\"|SENS:FUNC \"XTIMe:POWer\"}";
+    #out "%{|*RST}";
+    out "%{|SENS:FUNC \"XTIMe:POWer\"}";
+    out "INIT:CONT %{OFF|ON}";
 }
- 
-getTraceValue
+
+getTraceValueDBM
 {
     out "UNIT:POW DBM";
     out "CALC:FEED \"POW:TRAC\"";
     out "INIT";
     out "FETCh?";
     separator=","; 
-    in "%f";
+    in  "%g";
 }
-############### Trace Setting ##############
-############ Points ###########
+
+getTraceValueW
+{
+    out "UNIT:POW W";
+    out "CALC:FEED \"POW:TRAC\"";
+    out "INIT";
+    out "FETCh?";
+    separator=","; 
+    in  "%g";
+}
+############### ->Trace Setting<- ##############
+############ 1.Trace Points ###########
 getTracePoints
 {
     out "SENS:TRAC:POIN?";    in "%f";
@@ -114,52 +137,54 @@ getTracePoints
 setTracePoints
 {
     out "SENS:TRAC:POIN %f";
-    @init { getTracePoints; }
+    #out "SENS:TRAC:POIN %(A).0f";
+    #@init { getTracePoints; }
 }
-############ OffsetTime ###########
+############ 2.Trace OffsetTime ############
 getTraceOffsetTime
 {
-    out "SENS:TRAC:OFFS:TIME?";   in "%f";  
+    out "SENS:TRAC:OFFS:TIME?";   in "%g";  
 }
 setTraceOffsetTime
 {
-    out "SENS:TRAC:OFFS:TIME %f";
-    @init { getTraceOffsetTime; }
+    out "SENS:TRAC:OFFS:TIME %g";
+    #@init { getTraceOffsetTime; }
 }
-############ Trace Time ###########
+############ 3.Trace Time ############
 getTracetime
 {
-    out "SENS:TRAC:TIME?";    in "%f";
+    out "SENS:TRAC:TIME?";    in "%g";
 }
 setTraceTime
 {
-    out "SENS:TRAC:TIME %f";
-    @init { getTracetime; }
+    out "SENS:TRAC:TIME %g";
+    #@init { getTracetime; }
 }
-############ Trigger Source ###########
+############ 4.Trace Trigger Source ############
 getTriggerSource
 {
     out "TRIG:SOUR?";
-    in "%39c";
+    in  "%39c";
 }
 
 setTriggerSource
 {
-    out "TRIG:SOUR %#{IMM=1|INT=2|EXT=3|EXT2=4|BUS=5|HOLD=6}";
+    #out "TRIG:SOUR %#{IMM=1|INT=2|EXT=3|EXT2=4|BUS=5|HOLD=6}";
+    out "TRIG:SOUR %#{IMM=1|INT=2|EXT2=3}";
 }
-############ Trigger Level ###########
+############ 5.Trace Trigger Level ############
 getTracelevel
 {
     out "TRIG:LEV?";
-    in "%f";
+    in "%g";
 }
 setTracelevel
 {
-    out "TRIG:LEV %f";
-    @init { getTracelevel; }
+    out "TRIG:LEV %g";
+    #@init { getTracelevel; }
 }
 
-############ Trigger Delay ###########
+############ 6.Trace Trigger Delay ############
 getTriggerDelay
 {
     out "TRIG:DEL?";
@@ -168,5 +193,12 @@ getTriggerDelay
 setTriggerDelay
 {
     out "TRIG:DEL %f";
-    @init { getTriggerDelay; }
+    #@init { getTriggerDelay; }
 }
+
+############ 7.Trace Trigger Slope ############
+triggerSlope
+{
+    out "%#{TRIG:SLOP NEG=0|TRIG:SLOP POS=1}";
+}
+

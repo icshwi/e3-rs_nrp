@@ -18,8 +18,6 @@
   <height>600</height>
   <macros>
     <include_parent_macros>true</include_parent_macros>
-    <disdevidx>RFS-PM-01</disdevidx>
-    <secsub>SRFLab-010</secsub>
   </macros>
   <name></name>
   <rules />
@@ -50,7 +48,7 @@
     <border_width>1</border_width>
     <enabled>true</enabled>
     <font>
-      <opifont.name fontName="Sans" height="18" style="1" pixels="false">Header 1</opifont.name>
+      <opifont.name fontName="Cantarell" height="19" style="1" pixels="false">Header 1</opifont.name>
     </font>
     <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
     <foreground_color>
@@ -107,7 +105,7 @@ $(pv_value)</tooltip>
     <flip_horizontal>false</flip_horizontal>
     <flip_vertical>false</flip_vertical>
     <font>
-      <opifont.name fontName="Sans" height="10" style="0" pixels="false">Default</opifont.name>
+      <opifont.name fontName="Cantarell" height="11" style="0" pixels="false">Default</opifont.name>
     </font>
     <foreground_color>
       <color red="192" green="192" blue="192" />
@@ -162,7 +160,7 @@ $(pv_value)</tooltip>
     <effect_3d>true</effect_3d>
     <enabled>true</enabled>
     <font>
-      <opifont.name fontName="Sans" height="18" style="1" pixels="false">Header 1</opifont.name>
+      <opifont.name fontName="Cantarell" height="19" style="1" pixels="false">Header 1</opifont.name>
     </font>
     <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
     <foreground_color>
@@ -221,7 +219,7 @@ $(pv_value)</tooltip>
     <confirm_message></confirm_message>
     <enabled>true</enabled>
     <font>
-      <opifont.name fontName="Sans" height="18" style="1" pixels="false">Header 1</opifont.name>
+      <opifont.name fontName="Cantarell" height="19" style="1" pixels="false">Header 1</opifont.name>
     </font>
     <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
     <foreground_color>
@@ -273,7 +271,7 @@ $(pv_value)</tooltip>
     <border_width>1</border_width>
     <enabled>true</enabled>
     <font>
-      <opifont.name fontName="Sans" height="18" style="1" pixels="false">Header 1</opifont.name>
+      <opifont.name fontName="Cantarell" height="19" style="1" pixels="false">Header 1</opifont.name>
     </font>
     <foreground_color>
       <color red="0" green="0" blue="0" />
@@ -313,7 +311,7 @@ $(pv_value)</tooltip>
     <enabled>true</enabled>
     <fc>false</fc>
     <font>
-      <opifont.name fontName="Sans" height="10" style="0" pixels="false">Default</opifont.name>
+      <opifont.name fontName="Cantarell" height="11" style="0" pixels="false">Default</opifont.name>
     </font>
     <foreground_color>
       <color red="192" green="192" blue="192" />
@@ -364,7 +362,7 @@ $(pv_value)</tooltip>
       <border_width>1</border_width>
       <enabled>true</enabled>
       <font>
-        <opifont.name fontName="Sans" height="18" style="1" pixels="false">Header 1</opifont.name>
+        <opifont.name fontName="Cantarell" height="19" style="1" pixels="false">Header 1</opifont.name>
       </font>
       <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
       <foreground_color>
@@ -419,7 +417,7 @@ $(pv_value)</tooltip>
       <border_width>1</border_width>
       <enabled>true</enabled>
       <font>
-        <opifont.name fontName="Sans" height="18" style="1" pixels="false">Header 1</opifont.name>
+        <opifont.name fontName="Cantarell" height="19" style="1" pixels="false">Header 1</opifont.name>
       </font>
       <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
       <foreground_color>
@@ -467,7 +465,7 @@ $(pv_value)</tooltip>
     <border_width>1</border_width>
     <enabled>true</enabled>
     <font>
-      <opifont.name fontName="Sans" height="18" style="1" pixels="false">Header 1</opifont.name>
+      <opifont.name fontName="Cantarell" height="19" style="1" pixels="false">Header 1</opifont.name>
     </font>
     <forecolor_alarm_sensitive>false</forecolor_alarm_sensitive>
     <foreground_color>
