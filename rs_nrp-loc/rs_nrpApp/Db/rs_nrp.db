@@ -83,7 +83,7 @@ record(ao, "$(secsub):$(disdevidx):offset_value")
     field(SCAN, "Passive")
     field(VAL,  "10")
     field(EGU,  "dB")
-    field(PREC, "1")
+    field(PREC, "3")
     field(PINI, "YES")
 }
 

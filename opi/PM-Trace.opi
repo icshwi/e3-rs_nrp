@@ -75,7 +75,7 @@
     <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
       <actions hook="false" hook_all="false">
         <action type="OPEN_DISPLAY">
-          <path>PM03-MainGUI.opi</path>
+          <path>PM-GUI.opi</path>
           <macros>
             <include_parent_macros>true</include_parent_macros>
           </macros>
@@ -192,7 +192,7 @@ $(pv_value)</tooltip>
     <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
       <actions hook="false" hook_all="false">
         <action type="OPEN_DISPLAY">
-          <path>Trace-PM03-DBM.opi</path>
+          <path>PM-Trace-DBM.opi</path>
           <macros>
             <include_parent_macros>true</include_parent_macros>
           </macros>
@@ -247,7 +247,7 @@ $(pv_value)</tooltip>
     <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
       <actions hook="false" hook_all="false">
         <action type="OPEN_DISPLAY">
-          <path>Trace-PM03-W.opi</path>
+          <path>PM-Trace-W.opi</path>
           <macros>
             <include_parent_macros>true</include_parent_macros>
           </macros>

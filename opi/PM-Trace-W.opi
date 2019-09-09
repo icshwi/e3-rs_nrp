@@ -152,7 +152,7 @@ $(trace_0_y_pv_value)</tooltip>
     <trace_0_x_pv>$(secsub):$(disdevidx):timeArray</trace_0_x_pv>
     <trace_0_x_pv_value />
     <trace_0_y_axis_index>1</trace_0_y_axis_index>
-    <trace_0_y_pv>$(secsub):$(disdevidx):Value_trace_W_Calibration.AVAL</trace_0_y_pv>
+    <trace_0_y_pv>$(secsub):$(disdevidx):Value_trace_W</trace_0_y_pv>
     <trace_0_y_pv_value />
     <trace_1_anti_alias>true</trace_1_anti_alias>
     <trace_1_buffer_size>5000</trace_1_buffer_size>
@@ -1270,7 +1270,7 @@ $(pv_value)</tooltip>
     <widget typeId="org.csstudio.opibuilder.widgets.ActionButton" version="2.0.0">
       <actions hook="false" hook_all="false">
         <action type="OPEN_DISPLAY">
-          <path>Trace-PM03.opi</path>
+          <path>PM-Trace.opi</path>
           <macros>
             <include_parent_macros>true</include_parent_macros>
           </macros>
@@ -1352,7 +1352,7 @@ $(pv_value)</tooltip>
       <maximum>5000.0</maximum>
       <minimum>0.0</minimum>
       <multiline_input>false</multiline_input>
-      <name>Text Input</name>
+      <name>Text Input_4</name>
       <precision>0</precision>
       <precision_from_pv>true</precision_from_pv>
       <pv_name>$(secsub):$(disdevidx):Trace_points</pv_name>
@@ -1376,17 +1376,13 @@ if(triggerPV == pvs[0])
     pvs[3].setValue(value);
     pvs[4].setValue(value);
     pvs[5].setValue(value); 
-    pvs[6].setValue(value);
-    pvs[7].setValue(value);
-    //ConsoleUtil.writeInfo("Write to the TimeArray/TimeArray_us/TimeArrayCALC/TriggerDBM/TriggerW Y-axis/Calibration for dBm/W number.");]]></scriptText>
+    //ConsoleUtil.writeInfo("Write to the TimeArray/TimeArray_us/TimeArrayCALC/TriggerDBM/TriggerW Y-axis number.");]]></scriptText>
           <pv trig="true">$(secsub):$(disdevidx):Trace_points</pv>
           <pv trig="false">$(secsub):$(disdevidx):triggerArrayDBM.NUSE</pv>
           <pv trig="false">$(secsub):$(disdevidx):triggerArrayW.NUSE</pv>
           <pv trig="false">$(secsub):$(disdevidx):timeArray_.NUSE</pv>
           <pv trig="false">$(secsub):$(disdevidx):timeArray_us.NUSE</pv>
           <pv trig="false">$(secsub):$(disdevidx):timeArrayCALC.NUSE</pv>
-          <pv trig="false">$(secsub):$(disdevidx):Value_trace_DBM_Calibration.NUSE</pv>
-          <pv trig="false">$(secsub):$(disdevidx):Value_trace_W_Calibration.NUSE</pv>
         </path>
       </scripts>
       <selector_type>0</selector_type>
@@ -1399,8 +1395,8 @@ $(pv_value)</tooltip>
       <visible>true</visible>
       <widget_type>Text Input</widget_type>
       <width>100</width>
-      <wuid>-5ebcae7d:16d00531c51:-700b</wuid>
-      <x>471</x>
+      <wuid>-92706ed:16cf5e8eb77:-7f01</wuid>
+      <x>480</x>
       <y>60</y>
     </widget>
   </widget>
