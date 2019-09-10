@@ -130,7 +130,7 @@ $(pv_value)</tooltip>
         <path>PM-GUI.opi</path>
         <macros>
           <include_parent_macros>true</include_parent_macros>
-          <disdevidx>RFS-PM-01</disdevidx>
+          <disdevidx>PM01-Pick_up</disdevidx>
         </macros>
         <mode>1</mode>
         <description></description>
@@ -186,7 +186,7 @@ $(pv_value)</tooltip>
         <path>PM-GUI.opi</path>
         <macros>
           <include_parent_macros>true</include_parent_macros>
-          <disdevidx>RFS-PM-02</disdevidx>
+          <disdevidx>PM02-Forward</disdevidx>
         </macros>
         <mode>1</mode>
         <description></description>
@@ -242,7 +242,7 @@ $(pv_value)</tooltip>
         <path>PM-GUI.opi</path>
         <macros>
           <include_parent_macros>true</include_parent_macros>
-          <disdevidx>RFS-PM-03</disdevidx>
+          <disdevidx>PM03-Reflect</disdevidx>
         </macros>
         <mode>1</mode>
         <description></description>
