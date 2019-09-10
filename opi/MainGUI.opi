@@ -132,7 +132,7 @@ $(pv_value)</tooltip>
           <include_parent_macros>true</include_parent_macros>
           <disdevidx>RFS-PM-01</disdevidx>
         </macros>
-        <mode>6</mode>
+        <mode>1</mode>
         <description></description>
       </action>
     </actions>
@@ -169,7 +169,7 @@ $(pv_value)</tooltip>
     </scale_options>
     <scripts />
     <style>0</style>
-    <text>SRF Cavity:Pick-up</text>
+    <text>SRF-Cavity:Pick-up</text>
     <toggle_button>false</toggle_button>
     <tooltip>$(pv_name)
 $(pv_value)</tooltip>
@@ -188,7 +188,7 @@ $(pv_value)</tooltip>
           <include_parent_macros>true</include_parent_macros>
           <disdevidx>RFS-PM-02</disdevidx>
         </macros>
-        <mode>6</mode>
+        <mode>1</mode>
         <description></description>
       </action>
     </actions>
@@ -225,7 +225,7 @@ $(pv_value)</tooltip>
     </scale_options>
     <scripts />
     <style>0</style>
-    <text>SRF Cavity:Forward</text>
+    <text>SRF-Cavity:Forward</text>
     <toggle_button>false</toggle_button>
     <tooltip>$(pv_name)
 $(pv_value)</tooltip>
@@ -244,7 +244,7 @@ $(pv_value)</tooltip>
           <include_parent_macros>true</include_parent_macros>
           <disdevidx>RFS-PM-03</disdevidx>
         </macros>
-        <mode>6</mode>
+        <mode>1</mode>
         <description></description>
       </action>
     </actions>
@@ -281,7 +281,7 @@ $(pv_value)</tooltip>
     </scale_options>
     <scripts />
     <style>0</style>
-    <text>SRF Cavity:Reflect</text>
+    <text>SRF-Cavity:Reflect</text>
     <toggle_button>false</toggle_button>
     <tooltip>$(pv_name)
 $(pv_value)</tooltip>

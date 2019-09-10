@@ -70,8 +70,8 @@
     <widget_type>Grouping Container</widget_type>
     <width>781</width>
     <wuid>-36f1bb3:16c2366b790:-76d0</wuid>
-    <x>12</x>
-    <y>6</y>
+    <x>6</x>
+    <y>36</y>
     <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0.0">
       <actions hook="false" hook_all="false" />
       <auto_size>false</auto_size>
@@ -109,7 +109,7 @@
       <width>100</width>
       <wrap_words>false</wrap_words>
       <wuid>-36f1bb3:16c2366b790:-76ce</wuid>
-      <x>12</x>
+      <x>18</x>
       <y>54</y>
     </widget>
     <widget typeId="org.csstudio.opibuilder.widgets.TextInput" version="2.0.0">
@@ -166,7 +166,7 @@ $(pv_value)</tooltip>
       <widget_type>Text Input</widget_type>
       <width>100</width>
       <wuid>-36f1bb3:16c2366b790:-76cd</wuid>
-      <x>111</x>
+      <x>123</x>
       <y>54</y>
     </widget>
     <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0.0">
@@ -303,7 +303,7 @@ $(pv_value)</tooltip>
       <width>100</width>
       <wrap_words>false</wrap_words>
       <wuid>-36f1bb3:16c2366b790:-76c8</wuid>
-      <x>24</x>
+      <x>15</x>
       <y>126</y>
     </widget>
     <widget typeId="org.csstudio.opibuilder.widgets.combo" version="1.0.0">
@@ -345,7 +345,7 @@ $(pv_value)</tooltip>
       <widget_type>Combo</widget_type>
       <width>100</width>
       <wuid>-36f1bb3:16c2366b790:-76c3</wuid>
-      <x>134</x>
+      <x>123</x>
       <y>121</y>
     </widget>
     <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0.0">
@@ -1021,9 +1021,9 @@ $(pv_value)</tooltip>
 $(pv_value)</tooltip>
       <visible>true</visible>
       <widget_type>Action Button</widget_type>
-      <width>140</width>
+      <width>70</width>
       <wuid>-471c577d:16cb8826c79:-7384</wuid>
-      <x>628</x>
+      <x>684</x>
       <y>167</y>
     </widget>
     <widget typeId="org.csstudio.opibuilder.widgets.TextInput" version="2.0.0">
@@ -1257,7 +1257,7 @@ $(pv_value)</tooltip>
       <widget_type>Boolean Switch</widget_type>
       <width>50</width>
       <wuid>8533138:16d055ca623:-7f75</wuid>
-      <x>241</x>
+      <x>266</x>
       <y>169</y>
     </widget>
     <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0.0">
@@ -1367,7 +1367,8 @@ $(pv_value)</tooltip>
         <action type="EXECUTE_JAVASCRIPT">
           <path></path>
           <scriptText><![CDATA[importPackage(Packages.org.csstudio.opibuilder.scriptUtil);
-ConsoleUtil.writeInfo("W-display")
+//ConsoleUtil.writeInfo("W-display")
+
 display.getWidget("Watts-trace").setPropertyValue("visible",true)
 display.getWidget("DBM-trace").setPropertyValue("visible",false)
 display.getWidget("trigger-level-W").setPropertyValue("visible",true)
@@ -1419,9 +1420,9 @@ display.getWidget("XY Graph_DBM").setPropertyValue("visible",false)]]></scriptTe
 $(pv_value)</tooltip>
       <visible>true</visible>
       <widget_type>Action Button</widget_type>
-      <width>140</width>
+      <width>70</width>
       <wuid>16cc4cc6:16d19fb6b75:-7f5d</wuid>
-      <x>628</x>
+      <x>684</x>
       <y>12</y>
     </widget>
     <widget typeId="org.csstudio.opibuilder.widgets.BoolButton" version="1.0.0">
@@ -1717,7 +1718,8 @@ $(pv_value)</tooltip>
         <action type="EXECUTE_JAVASCRIPT">
           <path></path>
           <scriptText><![CDATA[importPackage(Packages.org.csstudio.opibuilder.scriptUtil);
-ConsoleUtil.writeInfo("DBM-display")
+//ConsoleUtil.writeInfo("DBM-display")
+
 display.getWidget("Watts-trace").setPropertyValue("visible",false)
 display.getWidget("DBM-trace").setPropertyValue("visible",true)
 display.getWidget("trigger-level-W").setPropertyValue("visible",false)
@@ -1769,9 +1771,9 @@ display.getWidget("XY Graph_DBM").setPropertyValue("visible",true)]]></scriptTex
 $(pv_value)</tooltip>
       <visible>true</visible>
       <widget_type>Action Button</widget_type>
-      <width>140</width>
+      <width>70</width>
       <wuid>-489fdfb5:16d1a3ad22a:-7e1c</wuid>
-      <x>477</x>
+      <x>600</x>
       <y>12</y>
     </widget>
   </widget>
@@ -1926,8 +1928,8 @@ $(trace_0_y_pv_value)</tooltip>
     <widget_type>XY Graph</widget_type>
     <width>781</width>
     <wuid>-471c577d:16cb8826c79:-7fae</wuid>
-    <x>12</x>
-    <y>222</y>
+    <x>6</x>
+    <y>252</y>
   </widget>
   <widget typeId="org.csstudio.opibuilder.widgets.xyGraph" version="1.0.0">
     <actions hook="false" hook_all="false" />
@@ -2080,7 +2082,47 @@ $(trace_0_y_pv_value)</tooltip>
     <widget_type>XY Graph</widget_type>
     <width>781</width>
     <wuid>16cc4cc6:16d19fb6b75:-7d60</wuid>
-    <x>12</x>
-    <y>222</y>
+    <x>6</x>
+    <y>252</y>
+  </widget>
+  <widget typeId="org.csstudio.opibuilder.widgets.Label" version="1.0.0">
+    <actions hook="false" hook_all="false" />
+    <auto_size>false</auto_size>
+    <background_color>
+      <color red="255" green="255" blue="255" />
+    </background_color>
+    <border_color>
+      <color red="0" green="128" blue="255" />
+    </border_color>
+    <border_style>0</border_style>
+    <border_width>1</border_width>
+    <enabled>true</enabled>
+    <font>
+      <fontdata fontName="Cantarell" height="18" style="1" pixels="false" />
+    </font>
+    <foreground_color>
+      <color red="0" green="0" blue="0" />
+    </foreground_color>
+    <height>40</height>
+    <horizontal_alignment>1</horizontal_alignment>
+    <name>Label_1</name>
+    <rules />
+    <scale_options>
+      <width_scalable>true</width_scalable>
+      <height_scalable>true</height_scalable>
+      <keep_wh_ratio>false</keep_wh_ratio>
+    </scale_options>
+    <scripts />
+    <text>$(secsub):$(disdevidx)</text>
+    <tooltip></tooltip>
+    <transparent>false</transparent>
+    <vertical_alignment>1</vertical_alignment>
+    <visible>true</visible>
+    <widget_type>Label</widget_type>
+    <width>450</width>
+    <wrap_words>false</wrap_words>
+    <wuid>-489fdfb5:16d1a3ad22a:-78aa</wuid>
+    <x>180</x>
+    <y>-3</y>
   </widget>
 </display>
