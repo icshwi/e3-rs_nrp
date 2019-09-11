@@ -84,7 +84,7 @@ getSmoothing
 ############### DUTY CYCLE Setting ##############
 setDCycle
 {      
-    out "SENSe:CORRection:DCYCle %(\$1:DCycle_value.VAL)f";
+    out "SENSe:CORRection:DCYCle %(\$1DCycle_value.VAL)f";
     out "%#{SENSe:CORRection:DCYCle:STATe OFF=0|SENSe:CORRection:DCYCle:STATe ON=1}";   
 }
 
