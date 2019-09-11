@@ -3,7 +3,7 @@ require rs_nrp,master
 epicsEnvSet("TOP", "$(E3_CMD_TOP)/..")
 epicsEnvSet("IP", "172.30.155.12")
 epicsEnvSet("secsub", "SRFLab-010")
-epicsEnvSet("disdevidx", "RFS-PM-01")
+epicsEnvSet("disdevidx", "PM01-Pick_up")
 
 epicsEnvSet("ASYN_PORT", "RS_NRP")
 

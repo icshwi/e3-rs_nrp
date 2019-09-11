@@ -375,17 +375,6 @@ record(calcout, "$(secsub):$(disdevidx):Trace_level_W")
     field(DOPT, "Use CALC")
     field(PREC, "3")
 }
-record(ao, "$(secsub):$(disdevidx):Trace_level_W_second")
-{
-    field(SCAN, "Passive")
-    field(DTYP, "stream")
-    field(OUT,  "@rs_nrp.proto setTracelevel $(PORT)")
-    field(VAL,  "1e-6")
-    field(PINI, "YES")
-    field(PREC, "3")
-    field(EGU,  "W")
-}
-
 record(ai,"$(secsub):$(disdevidx):Trace_level_callback_W")
 {
     field(SCAN, "1 second")
