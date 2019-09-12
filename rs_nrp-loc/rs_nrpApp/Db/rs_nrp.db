@@ -409,7 +409,7 @@ record(ao,"$(P)$(R)Trace_delay")
     field(EGU,  "ms")
     field(VAL,  "0")
     field(PINI, "YES")
-    field(PREC, "1")
+    field(PREC, "2")
 }
 record(calcout,"$(P)$(R)Trace_delay_calc")
 {
@@ -467,16 +467,7 @@ record(waveform,"$(P)$(R)Value_trace_W")
     field(PINI, "YES")
     field(PREC, "4")
 }
-#record(acalcout, "$(P)$(R)uW_calc")
-#{ 
-#    field(NELM, "5000")
-#    field(NUSE, "260")
-#    field(INAA, "$(P)$(R)Value_trace_W CP")
-#    field(INPA, "1e6")
-#    field(CALC, "@@0*@0")
-#    field(EGU,  "uW")
-#    field(PREC, "3")
-#}
+
 ############ CSS X/Y Display ############
 ########## --> Time Array <-- ##########
 record(acalcout, "$(P)$(R)timeArray_")
@@ -528,26 +519,42 @@ record(waveform, "$(P)$(R)timeArray")
     field(PREC, "3")
 }
 ########## --> Trigger DBM/W Array <-- ##########
-record(acalcout, "$(P)$(R)triggerArrayDBM")
+record(acalcout, "$(P)$(R)triggerArrayDBM_")
 {
-    field(DESC, "Trigger Yaxis: DBM unit")
     field(SCAN, "Passive")
     field(NELM, "5000")
     field(NUSE, "260")
     field(INPA, "$(P)$(R)Trace_level_callback_DBM CP")
     field(CALC, "(IX+1)/(IX+1)*@0")
+    field(PREC, "3")
+    field(OUT,  "$(P)$(R)triggerArrayDBM PP")
+}
+record(waveform, "$(P)$(R)triggerArrayDBM")
+{
+    field(DESC, "Trigger Yaxis: DBM unit")
+    field(SCAN, "1 second")
+    field(FTVL, "DOUBLE")
+    field(NELM, "5000")
     field(EGU,  "dBm")
     field(PREC, "3")
 }
 
-record(acalcout, "$(P)$(R)triggerArrayW")
+record(acalcout, "$(P)$(R)triggerArrayW_")
 {
-    field(DESC, "Trigger Yaxis: W unit")
     field(SCAN, "Passive")
     field(NELM, "5000")
     field(NUSE, "260")
     field(INPA, "$(P)$(R)Trace_level_callback_W CP")
     field(CALC, "(IX+1)/(IX+1)*@0")
+    field(PREC, "3")
+    field(OUT,  "$(P)$(R)triggerArrayW PP")
+}
+record(waveform, "$(P)$(R)triggerArrayW")
+{
+    field(DESC, "Trigger Yaxis: W unit")
+    field(SCAN, "1 second")
+    field(FTVL, "DOUBLE")
+    field(NELM, "5000")
     field(EGU,  "W")
     field(PREC, "3")
 }

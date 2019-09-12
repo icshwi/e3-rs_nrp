@@ -39,7 +39,7 @@ setFrequency
 ############### OFFSET_SWITCH ###############
 offset_switch
 {      
-    out "CORRection:OFFSet %(\$1:offset_value.VAL)f";
+    out "CORRection:OFFSet %(\$1offset_value.VAL)f";
     out "%#{CORR:OFFS:STAT OFF=0|CORR:OFFS:STAT ON=1}";   
 }
 
@@ -137,7 +137,6 @@ getTracePoints
 setTracePoints
 {
     out "SENS:TRAC:POIN %f";
-    #out "SENS:TRAC:POIN %(A).0f";
     #@init { getTracePoints; }
 }
 ############ 2.Trace OffsetTime ############
@@ -188,11 +187,11 @@ setTracelevel
 getTriggerDelay
 {
     out "TRIG:DEL?";
-    in "%f";
+    in "%g";
 }
 setTriggerDelay
 {
-    out "TRIG:DEL %f";
+    out "TRIG:DEL %g";
     #@init { getTriggerDelay; }
 }
 
