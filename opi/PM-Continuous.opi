@@ -110,7 +110,7 @@
       <on_label>ON</on_label>
       <password></password>
       <push_action_index>0</push_action_index>
-      <pv_name>$(secsub):$(disdevidx):smoothing</pv_name>
+      <pv_name>$(P):$(R):smoothing</pv_name>
       <pv_value />
       <released_action_index>0</released_action_index>
       <rules />
@@ -171,7 +171,7 @@
       <on_label>ON</on_label>
       <password></password>
       <push_action_index>0</push_action_index>
-      <pv_name>$(secsub):$(disdevidx):set_DCycle</pv_name>
+      <pv_name>$(P):$(R):set_DCycle</pv_name>
       <pv_value />
       <released_action_index>0</released_action_index>
       <rules />
@@ -228,7 +228,7 @@ $(pv_value)</tooltip>
       <name>Text Input_2</name>
       <precision>0</precision>
       <precision_from_pv>true</precision_from_pv>
-      <pv_name>$(secsub):$(disdevidx):Aperture_value</pv_name>
+      <pv_name>$(P):$(R):Aperture_value</pv_name>
       <pv_value />
       <rotation_angle>0.0</rotation_angle>
       <rules />
@@ -285,7 +285,7 @@ $(pv_value)</tooltip>
       <name>Text Input_1</name>
       <precision>2</precision>
       <precision_from_pv>true</precision_from_pv>
-      <pv_name>$(secsub):$(disdevidx):DCycle_value</pv_name>
+      <pv_name>$(P):$(R):DCycle_value</pv_name>
       <pv_value />
       <rotation_angle>0.0</rotation_angle>
       <rules />
@@ -457,7 +457,7 @@ $(pv_value)</tooltip>
       <name>Text Update_1</name>
       <precision>0</precision>
       <precision_from_pv>true</precision_from_pv>
-      <pv_name>$(secsub):$(disdevidx):Value_DBM</pv_name>
+      <pv_name>$(P):$(R):Value_DBM</pv_name>
       <pv_value />
       <rotation_angle>0.0</rotation_angle>
       <rules />
@@ -554,7 +554,7 @@ $(pv_value)</tooltip>
       <name>Text Input</name>
       <precision>0</precision>
       <precision_from_pv>true</precision_from_pv>
-      <pv_name>$(secsub):$(disdevidx):offset_value</pv_name>
+      <pv_name>$(P):$(R):offset_value</pv_name>
       <pv_value />
       <rotation_angle>0.0</rotation_angle>
       <rules />
@@ -616,7 +616,7 @@ $(pv_value)</tooltip>
       <on_label>ON</on_label>
       <password></password>
       <push_action_index>0</push_action_index>
-      <pv_name>$(secsub):$(disdevidx):offset_switch</pv_name>
+      <pv_name>$(P):$(R):offset_switch</pv_name>
       <pv_value />
       <released_action_index>0</released_action_index>
       <rules />
@@ -711,7 +711,7 @@ $(pv_value)</tooltip>
       <name>Text Input_1</name>
       <precision>0</precision>
       <precision_from_pv>true</precision_from_pv>
-      <pv_name>$(secsub):$(disdevidx):setAverage</pv_name>
+      <pv_name>$(P):$(R):setAverage</pv_name>
       <pv_value />
       <rotation_angle>0.0</rotation_angle>
       <rules />
@@ -763,7 +763,7 @@ $(pv_value)</tooltip>
       <name>Text Update_1</name>
       <precision>0</precision>
       <precision_from_pv>true</precision_from_pv>
-      <pv_name>$(secsub):$(disdevidx):get_Aperture_calc</pv_name>
+      <pv_name>$(P):$(R):get_Aperture_calc</pv_name>
       <pv_value />
       <rotation_angle>0.0</rotation_angle>
       <rules />
@@ -865,7 +865,7 @@ $(pv_value)</tooltip>
         <on_label>Continuous ON</on_label>
         <password></password>
         <push_action_index>0</push_action_index>
-        <pv_name>$(secsub):$(disdevidx):setRun</pv_name>
+        <pv_name>$(P):$(R):setRun</pv_name>
         <pv_value />
         <released_action_index>0</released_action_index>
         <rules />
@@ -892,14 +892,14 @@ $(pv_value)</tooltip>
       <widget typeId="org.csstudio.opibuilder.widgets.BoolButton" version="1.0.0">
         <actions hook="false" hook_all="false">
           <action type="WRITE_PV">
-            <pv_name>$(secsub):$(disdevidx):Value_DBM.SCAN</pv_name>
+            <pv_name>$(P):$(R):Value_DBM.SCAN</pv_name>
             <value>.5 second</value>
             <timeout>10</timeout>
             <confirm_message></confirm_message>
             <description></description>
           </action>
           <action type="WRITE_PV">
-            <pv_name>$(secsub):$(disdevidx):Value_DBM.SCAN</pv_name>
+            <pv_name>$(P):$(R):Value_DBM.SCAN</pv_name>
             <value>Passive</value>
             <timeout>10</timeout>
             <confirm_message></confirm_message>
@@ -942,7 +942,7 @@ $(pv_value)</tooltip>
         <on_label>Measure ON</on_label>
         <password></password>
         <push_action_index>0</push_action_index>
-        <pv_name>$(secsub):$(disdevidx):Value_DBM.SCAN</pv_name>
+        <pv_name>$(P):$(R):Value_DBM.SCAN</pv_name>
         <pv_value />
         <released_action_index>1</released_action_index>
         <rules />
@@ -1050,7 +1050,7 @@ $(pv_value)</tooltip>
       <name>Text Update_1</name>
       <precision>0</precision>
       <precision_from_pv>true</precision_from_pv>
-      <pv_name>$(secsub):$(disdevidx):getAverage</pv_name>
+      <pv_name>$(P):$(R):getAverage</pv_name>
       <pv_value />
       <rotation_angle>0.0</rotation_angle>
       <rules />
@@ -1102,7 +1102,7 @@ $(pv_value)</tooltip>
         <keep_wh_ratio>false</keep_wh_ratio>
       </scale_options>
       <scripts />
-      <text>$(secsub):$(disdevidx)</text>
+      <text>$(P):$(R)</text>
       <tooltip></tooltip>
       <transparent>false</transparent>
       <vertical_alignment>1</vertical_alignment>

@@ -105,7 +105,7 @@
     <name>Text Input_1</name>
     <precision>2</precision>
     <precision_from_pv>true</precision_from_pv>
-    <pv_name>$(secsub):$(disdevidx):FREQ_value</pv_name>
+    <pv_name>$(P):$(R):FREQ_value</pv_name>
     <pv_value />
     <rotation_angle>0.0</rotation_angle>
     <rules />
@@ -157,7 +157,7 @@ $(pv_value)</tooltip>
     <name>Text Update_1</name>
     <precision>0</precision>
     <precision_from_pv>true</precision_from_pv>
-    <pv_name>$(secsub):$(disdevidx):getFREQ</pv_name>
+    <pv_name>$(P):$(R):getFREQ</pv_name>
     <pv_value />
     <rotation_angle>0.0</rotation_angle>
     <rules />
@@ -334,14 +334,14 @@ $(pv_value)</tooltip>
     <widget typeId="org.csstudio.opibuilder.widgets.BoolButton" version="1.0.0">
       <actions hook="false" hook_all="false">
         <action type="WRITE_PV">
-          <pv_name>$(secsub):$(disdevidx):reset</pv_name>
+          <pv_name>$(P):$(R):reset</pv_name>
           <value>1</value>
           <timeout>10</timeout>
           <confirm_message></confirm_message>
           <description></description>
         </action>
         <action type="WRITE_PV">
-          <pv_name>$(secsub):$(disdevidx):reset</pv_name>
+          <pv_name>$(P):$(R):reset</pv_name>
           <value>0</value>
           <timeout>10</timeout>
           <confirm_message></confirm_message>
@@ -491,7 +491,7 @@ $(pv_value)</tooltip>
       <keep_wh_ratio>false</keep_wh_ratio>
     </scale_options>
     <scripts />
-    <text>$(secsub):$(disdevidx)</text>
+    <text>$(P):$(R)</text>
     <tooltip></tooltip>
     <transparent>false</transparent>
     <vertical_alignment>1</vertical_alignment>
