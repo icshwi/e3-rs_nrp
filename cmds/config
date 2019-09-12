@@ -1,3 +1,3 @@
-epicsEnvSet("IP", "172.30.155.13")
+epicsEnvSet("IP", "172.30.155.12")
 epicsEnvSet("secsub", "SRFLab-010")
-epicsEnvSet("disdevidx", "PM02-Forward")
+epicsEnvSet("disdevidx", "PM01-Pick_up")

@@ -366,8 +366,7 @@ record(ao,"$(P)$(R)Trace_level_DBM")
 }
 record(calcout, "$(P)$(R)Trace_level_W")
 {
-    #field(SCAN, "Passive")
-    field(SCAN, "1 second")
+    field(SCAN, "Passive")
     field(DTYP, "stream")
     field(OUT,  "@rs_nrp.proto setTracelevel $(PORT)")
     field(CALC, "(10^(A/10))/1000")
