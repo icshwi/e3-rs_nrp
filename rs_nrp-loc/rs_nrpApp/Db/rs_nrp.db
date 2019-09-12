@@ -36,27 +36,25 @@ record(bo, "$(P)$(R)setRun")
 ########## Frequency setting ##########
 record(ao,"$(P)$(R)FREQ_value")
 {
-    field(SCAN, "1 second")
-    field(PHAS, "0")
+    field(SCAN, "Passive")
     field(FLNK, "$(P)$(R)setFREQ")
     field(VAL,  "702.059")
     field(EGU,  "MHz")
     field(PREC, "3")
     field(PINI, "YES")
+    field(FLNK, "$(P)$(R)setFREQ")
 }
 record(calcout,"$(P)$(R)setFREQ")
 {
     field(SCAN, "1 second")
-    field(PHAS, "1")
     field(DTYP, "stream")
     field(OUT,  "@rs_nrp.proto setFrequency $(PORT)")
     field(CALC, "A*B")
-    field(INPA, "$(P)$(R)FREQ_value.VAL")
+    field(INPA, "$(P)$(R)FREQ_value PP")
     field(INPB, "1e6")
     field(OOPT, "Every Time")
     field(DOPT, "Use CALC")
 }
-
 record(ai, "$(P)$(R)getFREQ")
 {
     field(SCAN, "1 second")
@@ -68,6 +66,14 @@ record(ai, "$(P)$(R)getFREQ")
 ##########################################################
 ########## -->Continuous Mode GUI<-- ##########
 ########### 1.Offset Setting ###########
+record(ao, "$(P)$(R)offset_value")
+{
+    field(SCAN, "Passive")
+    field(VAL,  "10")
+    field(EGU,  "dB")
+    field(PREC, "3")
+    field(PINI, "YES")
+}
 record(bo, "$(P)$(R)offset_switch")
 {
     field(SCAN, "1 second")
@@ -77,23 +83,15 @@ record(bo, "$(P)$(R)offset_switch")
     field(ZNAM, "0")
     field(ONAM, "1")
 }
-
-record(ao, "$(P)$(R)offset_value")
-{
-    field(SCAN, "Passive")
-    field(VAL,  "10")
-    field(EGU,  "dB")
-    field(PREC, "3")
-    field(PINI, "YES")
-}
-
 ########### 2.Averaging ###########
-record(ao, "$(P)$(R)setAverage")
+record(calcout, "$(P)$(R)setAverage")
 {
     field(SCAN, "Passive")
     field(DTYP, "stream")
     field(OUT,  "@rs_nrp.proto setAverage $(PORT)")
     field(VAL,  "4")
+    field(CALC, "A")
+    field(INPA, "$(P)$(R)setAverage.VAL")
     field(PINI, "YES") 
 }
 
@@ -108,10 +106,10 @@ record(ai, "$(P)$(R)getAverage")
 record(ao,"$(P)$(R)Aperture_value")
 {
     field(SCAN, "Passive")
-    field(EGU,  "ms")
-    field(PREC, "3")
     field(VAL,  "20")
     field(PINI, "YES")
+    field(EGU,  "ms")
+    field(PREC, "3")
     field(HIHI, "2000")
     field(HIGH, "1800")
     field(LOW,  "0.012")
@@ -128,7 +126,7 @@ record(calcout,"$(P)$(R)set_Aperture")
     field(DTYP, "stream")
     field(OUT,  "@rs_nrp.proto setAperture $(PORT)")
     field(CALC, "A/B")
-    field(INPA, "$(P)$(R)Aperture_value.VAL")
+    field(INPA, "$(P)$(R)Aperture_value PP")
     field(INPB, "1000")
     field(OOPT, "Every Time")
     field(DOPT, "Use CALC")
@@ -145,7 +143,7 @@ record(ai, "$(P)$(R)get_Aperture")
 record(calc, "$(P)$(R)get_Aperture_calc")
 {
     field(SCAN, "Passive")
-    field(INPA, "$(P)$(R)get_Aperture.VAL")
+    field(INPA, "$(P)$(R)get_Aperture PP")
     field(INPB, "1e3")
     field(CALC, "A*B")
     field(EGU,  "ms")

@@ -19,5 +19,8 @@ iocshLoad("$(rs_nrp_DIR)/rs_nrp.iocsh", "secsub=$(secsub), disdevidx=$(disdevidx
 iocInit
 
 dbl > "$(TOP)/${disdevidx}-PVs.list"
+epicsEnvShow >> "$(TOP)/${disdevidx}-PVs.list"
 
-#epicsEnvShow
+#epicsEnvSet v1 SRFLab-010:PM01-Pick_up:setAverage
+#dbpr ${v1}
+
