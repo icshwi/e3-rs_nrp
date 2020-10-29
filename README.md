@@ -1,3 +1,6 @@
+# Deprecation notice
+
+This remote has been deprecated. Moved to https://gitlab.esss.lu.se/icshwi/e3-rs_nrpxxsn.
 
 e3-rs_nrp  
 ======
